@@ -101,7 +101,29 @@ function scrapeLinksRun() {
 	};
 }
 
-scrapeLinksRun();
+function scrapeProductsRun() {
+	$file = './links/condimente.txt';
+	$newFile = './products/condimente.txt';
+
+	$handle = fopen($file, "r");
+
+	if ($file) {
+		while (($line = fgets($handle)) !== false) {
+			if('' != trim($line)) {
+				$finder = scrapeUrl(trim($line));
+				$product = json_encode(scrapeProduct($finder));
+
+				file_put_contents($newFile, $product, FILE_APPEND | LOCK_EX);
+				sleep(3);
+			}
+		}
+
+		fclose($handle);
+	}
+}
+
+// scrapeLinksRun();
+scrapeProductsRun();
 
 	// foreach ($productUrls as $value) {
 	// 	$finder = scrapeUrl($value->loc);
