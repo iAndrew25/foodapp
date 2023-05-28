@@ -102,8 +102,8 @@ function scrapeLinksRun() {
 }
 
 function scrapeProductsRun() {
-	$file = './links/cereale.txt';
-	$newFile = './products/cereale.txt';
+	$file = './links/paine.txt';
+	$newFile = './products/paine.txt';
 
 	$handle = fopen($file, "r");
 
